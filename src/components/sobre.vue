@@ -3,7 +3,8 @@
     <v-row>
       <v-col
         cols="12"
-        class="d-flex justify-center"
+        class="d-flex justify-center font-weight-bold color primary"
+        style="font-size: 20px !important;"
       >
         Sobre
       </v-col>

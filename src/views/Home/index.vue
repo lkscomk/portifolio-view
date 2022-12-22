@@ -1,31 +1,26 @@
 <template>
   <main>
-    <div style="background-color: red;
-  height: 100%;
-  width: 100%;">
+    <div style="
+        height: 100%;
+        width: 100%;">
       <home></home>
     </div>
-    <div>
-      <sobre></sobre>
-    </div>
-    <div>
-      <habilidades></habilidades>
-    </div>
+
   </main>
 </template>
 
 <script>
 import home from '@/components/home'
-import sobre from '@/components/sobre'
-import habilidades from '@/components/habilidades'
+// import sobre from '@/components/sobre'
+// import habilidades from '@/components/habilidades'
 
 export default {
   name: 'HelloWorld',
 
   components: {
-    home,
-    sobre,
-    habilidades
+    home
+    // sobre,
+    // habilidades
   },
 
   data: () => ({
