@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <notificacao />
     <router-view/>
   </v-app>
 </template>
@@ -11,6 +12,10 @@ export default {
 
   data: () => ({
     //
-  })
+  }),
+
+  created () {
+    this.$vuetify.theme.dark = Boolean(window.atob(localStorage.getItem('portifolio/tema')))
+  }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <v-main
-    :style="['Workplace', 'Detalhamento do projeto'].indexOf(this.$router.currentRoute.name) > -1
+    :style="['Workplace', 'Detalhamento do projeto'].indexOf($router.currentRoute.name) > -1
       ? 'padding-left: 0px!important;'
       : 'padding-top: 64px!important;'"
   >
@@ -24,7 +24,7 @@
               ? 'headline font-weight-bold'
               : 'title font-weight-bold'"
           >
-            LUKASVERSO
+            Lukas Rodrigues
           </span>
         </v-toolbar-title>
       </div>
@@ -32,38 +32,54 @@
      <v-spacer />
 
      <v-btn
+        v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
         class="mr-2"
         color="white"
         text
-        @click="alterarTema()"
+        @click="openUrl('/')"
       >
         HOME
       </v-btn>
      <v-btn
+        v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
         class="mx-2"
         color="white"
         text
-        @click="alterarTema()"
+        @click="openUrl('/habilidades')"
       >
         HABILIDADES
       </v-btn>
      <v-btn
-        class="mr-2"
-        color="white"
-        text
-        @click="alterarTema()"
-      >
-        SOBRE
-      </v-btn>
-     <v-btn
+        v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
         class="mx-2"
         color="white"
         text
-        @click="alterarTema()"
+        @click="openUrl('/portofolio')"
+      >
+        PORTIFÓLIO
+      </v-btn>
+     <v-btn
+        v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
+        class="mr-2"
+        color="white"
+        text
+        @click="openUrl('/sobre')"
+      >
+        SOBRE
+      </v-btn>
+      <v-btn
+        v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
+        class="mx-2"
+        color="white"
+        text
+        @click="openUrl('/contato')"
       >
         CONTATO
       </v-btn>
-      <div style="color: white" >
+      <div
+        v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
+        style="color: white"
+      >
         |
       </div>
       <v-btn
@@ -74,12 +90,63 @@
           color="white"
         >
           {{
-            this.$vuetify.theme.dark
+            $vuetify.theme.dark
               ? 'mdi-white-balance-sunny'
               : 'mdi-weather-night'
           }}
         </v-icon>
       </v-btn>
+      <v-menu
+        v-if="$vuetify.breakpoint.name === 'sm' || $vuetify.breakpoint.name === 'xs'"
+        offset-y
+        left
+      >
+        <template v-slot:activator="{ on }">
+          <v-tooltip
+            activator="#mo-modal-tooltip"
+            bottom
+          >
+            <span>Mais Opções</span>
+          </v-tooltip>
+          <v-btn
+            :color="$vuetify.theme.dark ? '' : 'primary darken-3'"
+            class="mx-0"
+            dark
+            small
+            icon
+            v-on="on"
+            >
+              <v-icon>
+                mdi-menu
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-list
+          class="pa-0"
+          dense
+        >
+          <v-list-item @click="openUrl('/')">
+            <v-list-item-content>
+              <v-list-item-title> HOME </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item @click="openUrl('/habilidades')">
+            <v-list-item-content>
+              <v-list-item-title> HABILIDADES </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item @click="openUrl('/sobre')">
+            <v-list-item-content>
+              <v-list-item-title> SOBRE </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item @click="openUrl('/contato')">
+            <v-list-item-content>
+              <v-list-item-title> CONTATO </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        </v-menu>
     </v-app-bar>
 
     <!-- TODO: Transição do router -->
@@ -102,7 +169,7 @@
         cols="12"
       >
         <span class="caption font-weight-bold mr-10">
-          {{ dataAtual }}
+          {{ dataAtual }} {{ $vuetify.theme.dark }}
         </span>
         <strong v-if="!$vuetify.breakpoint.mobile">
           Todos os direitos reservados LUKASVERSO
@@ -123,8 +190,6 @@ export default {
   }),
 
   created () {
-    window.console.log(window.atob(localStorage.getItem('igprojetos:tema')))
-    this.$vuetify.theme.dark = window.atob(localStorage.getItem('igprojetos:tema'))
     setTimeout(() => {
       this.atualizarData()
     }, 200)
@@ -134,8 +199,8 @@ export default {
     alterarTema () {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
       localStorage.setItem(
-        'igprojetos:tema',
-        window.btoa(this.$vuetify.theme.dark)
+        'portifolio/tema',
+        this.$vuetify.theme.dark
       )
     },
     atualizarData () {
@@ -152,6 +217,13 @@ export default {
       if (!res.erro) this.$router.push('/login')
 
       this.loading = false
+    },
+    openUrl (url) {
+      const route = this.$router.resolve({ path: url })
+
+      if (url) {
+        this.$router.push(route.href)
+      }
     }
   }
 }
