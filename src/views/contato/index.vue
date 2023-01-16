@@ -285,7 +285,13 @@ export default {
           email: 'lukasrocharodregues@gmail.com',
           titulo: `Mensagem Enviado por ${this.formulario.email} - ${this.formulario.nome}`
         })
-        window.console.log(res)
+        if (res) {
+          this.formulario = {
+            nome: null,
+            email: null,
+            conteudo: null
+          }
+        }
         this.loading = false
       }
     }

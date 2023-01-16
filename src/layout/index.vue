@@ -169,7 +169,7 @@
         cols="12"
       >
         <span class="caption font-weight-bold mr-10">
-          {{ dataAtual }} {{ $vuetify.theme.dark }}
+          {{ dataAtual }}
         </span>
         <strong v-if="!$vuetify.breakpoint.mobile">
           Todos os direitos reservados LUKASVERSO
