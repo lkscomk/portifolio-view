@@ -131,6 +131,7 @@
           v-slot="{ errors }"
           name="Conteúdo"
           vid="conteudo"
+          rules="required"
         >
         <v-textarea
           v-model="formulario.conteudo"

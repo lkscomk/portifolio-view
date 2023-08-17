@@ -11,15 +11,20 @@ const Axios = axios.create({
 Axios.interceptors.response.use((response) => {
   store.commit('app/setNotificacao', {
     ativo: true,
-    cor: 'success',
+    cor: 'erro',
     icone: '',
-    mensagem: response.data,
+    mensagem: response.data.mensagem,
     tempo: 3000
   })
   return response
 }, function (error) {
-  // Qualquer código de status que não esteja no limite do código 2xx faz com que está função seja acionada
-  // Faz alguma coisa com o erro da resposta
+  store.commit('app/setNotificacao', {
+    ativo: true,
+    cor: 'success',
+    icone: '',
+    mensagem: 'Infelizmente seu email não foi enviado, tente novamente mais tarde!',
+    tempo: 3000
+  })
   return Promise.reject(error)
 })
 
