@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="">
-    <v-row>
-      <v-col cols="12" xl="3" lg="3" md="3" sm="12" class="color "></v-col>
+    <v-row class="d-flex justify-center pt-5">
+      <v-col cols="12" xl="3" lg="3" md="3" sm="12" class="color"></v-col>
       <v-col cols="12" xl="8" lg="8" md="8" sm="12"
         class="d-flex justify-start ma-0 pl-5 color "
       >
@@ -10,7 +10,7 @@
         </div>
       </v-col>
       <v-col cols="12" xl="3" lg="3" md="3" sm="12"
-        class="d-flex justify-start ma-0 pl-5 color "
+        class="d-flex justify-start ma-0 pl-5 color"
       >
         <img class="perfil" src="@/assets/me.jpeg" alt="imagem do autor">
       </v-col>
@@ -18,7 +18,7 @@
         cols="12" xl="8" lg="8" md="8" sm="10"
         class="d-flex justify-start ma-0 pl-5 pt-2 color "
       >
-        <p align="justify">Hi, my name is Lukas. I'm have 19 years old. I'm from Porto Velho, Rondônia.<br/><br/>I started in the world of development in 2019 when I entered the Federal Institute of Rondônia, there I did high school integrated with the technical course. In 2022 I entered college (also in IFRO), in the internet systems course. <br/><br/>I started to work in the development area in 2022 at the Irmãos Gonçalves supermarket. There I learned Node Js, JavaScript, Vuejs, MySql and a little bit of typescript (not much). <br/><br/>Also, I understand HTML, CSS and Python (I love python because it was the first language I learned). I also love cats and coffee. <br/><br/>Finally, I confess that I don't know English very well, I understand many things but I still have difficulty, I can read a text but I can't understand someone speaking. But, I try very hard every day to learn new things. good morning thank you.
+        <p>Hi, my name is Lukas. I'm have 19 years old. I'm from Porto Velho, Rondônia.<br/><br/>I started in the world of development in 2019 when I entered the Federal Institute of Rondônia, there I did high school integrated with the technical course. In 2022 I entered college (also in IFRO), in the internet systems course. <br/><br/>I started to work in the development area in 2022 at the Irmãos Gonçalves supermarket. There I learned Node Js, JavaScript, Vuejs, MySql and a little bit of typescript (not much). <br/><br/>Also, I understand HTML, CSS and Python (I love python because it was the first language I learned). I also love cats and coffee. <br/><br/>Finally, I confess that I don't know English very well, I understand many things but I still have difficulty, I can read a text but I can't understand someone speaking. But, I try very hard every day to learn new things. good morning thank you.
         </p>
       </v-col>
     </v-row>

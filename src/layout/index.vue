@@ -54,7 +54,7 @@
         class="mx-2"
         color="white"
         text
-        @click="openUrl('/portofolio')"
+        @click="openUrl('/portfolio')"
       >
         PORTIFÓLIO
       </v-btn>
