@@ -11,22 +11,27 @@ const routes = [
       {
         path: '/',
         name: 'Home',
-        component: () => import('../views/home')
+        component: () => import('@/views/home')
       },
       {
         path: '/sobre',
         name: 'Sobre',
-        component: () => import('../views/sobre')
+        component: () => import('@/views/sobre')
       },
       {
         path: '/habilidades',
         name: 'Habilidades',
-        component: () => import('../views/habilidades')
+        component: () => import('@/views/habilidades')
+      },
+      {
+        path: '/portfolio',
+        name: 'Portfolio',
+        component: () => import('@/views/portfolio')
       },
       {
         path: '/contato',
         name: 'Contato',
-        component: () => import('../views/contato')
+        component: () => import('@/views/contato')
       }
     ]
   }

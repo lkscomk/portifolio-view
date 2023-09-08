@@ -17,31 +17,33 @@
           Meu nivel técnico
         </div>
       </v-col>
-      <v-col cols="12" xl="5" md="5" sm="12" class="text-h5 d-flex justify-center">
+      <v-col
+        cols="12" xl="6" md="6" sm="12" class="text-h5 d-flex justify-center">
           Desenvolvimento
       </v-col>
       <v-col
         v-if="$vuetify.breakpoint.name === 'xl' || $vuetify.breakpoint.name === 'lg' || $vuetify.breakpoint.name === 'md'"
-        cols="12" xl="5" md="5" class="text-h5 d-flex justify-center"
+        cols="12" xl="6" md="6" sm="12" class="text-h5 d-flex justify-center"
       >
           Ferramentas
       </v-col>
-      <v-col cols="12" xl="6" md="6" sm="12">
+      <v-col cols="12" xl="6" md="6" sm="12" class="">
         <v-row
           v-for="(hab, i) of desenvolvimento"
           :key="i"
         >
-          <v-col cols="4" xl="4" md="4" sm="3" class="d-flex justify-end align-cente">
+          <v-col cols="4" xl="4" md="4" sm="3" class="d-flex justify-end align-center">
             <v-icon class="mr-2" :color="hab.cor">
             {{ `${hab.icon}` }}
             </v-icon>
             {{ hab.nome }}
           </v-col>
-          <v-col cols="7" xl="6" md="4" sm="7"  class="d-flex justify-center align-center">
+          <v-col cols="7" xl="6" md="6" sm="7"  class="d-flex justify-center align-center">
             <v-progress-linear
               v-model="hab.progresso"
               :color="hab.cor"
               height="20"
+              style="pointer-events: none; cursor: default;"
               >
               <template v-slot:default="{ value }">
                 <strong>{{ Math.ceil(value) }}%</strong>
@@ -56,12 +58,12 @@
       >
           Ferramentas
       </v-col>
-      <v-col cols="12" xl="6" md="6" sm="12">
+      <v-col cols="12" xl="6" md="6" sm="12" class="">
         <v-row
           v-for="(hab, i) of ferramentas"
           :key="i"
         >
-          <v-col cols="4" xl="2" md="2" sm="3" class="d-flex justify-end align-center">
+          <v-col cols="4" xl="4" md="4" sm="3" class="d-flex justify-end align-center">
             <v-icon class="mr-2" :color="hab.cor">
             {{ `${hab.icon}` }}
             </v-icon>
@@ -69,9 +71,11 @@
           </v-col>
           <v-col cols="7" xl="6" md="6" sm="7" class="d-flex justify-center align-center">
             <v-progress-linear
+              ref="progressLinear"
               v-model="hab.progresso"
               :color="hab.cor"
               height="20"
+              style="pointer-events: none; cursor: default;"
               >
               <template v-slot:default="{ value }">
                 <strong>{{ Math.ceil(value) }}%</strong>
@@ -140,6 +144,13 @@ export default {
         icon: 'mdi-language-typescript',
         progresso: 5,
         cor: '#0076c6'
+      },
+      {
+        id: 8,
+        nome: 'Django',
+        icon: 'mdi-language-python',
+        progresso: 5,
+        cor: '#092d1f'
       }
     ],
     ferramentas: [
@@ -166,42 +177,7 @@ export default {
       }
     ]
   }),
-
-  created () {
-    this.construcaoTexto()
-    // this.colarBarraProgresso()
-  },
-
-  methods: {
-    construcaoTexto () {
-      let conteudo = 'esenvolvedor'.split('').reverse()
-      setInterval(() => {
-        if (conteudo.length > 0) {
-          this.texto += conteudo.pop()
-        } else {
-          conteudo = 'esenvolvedor'.split('').reverse()
-          this.texto = 'D'
-        }
-      }, 250)
-      setInterval(() => {
-        if (this.barra) this.barra = ''
-        else this.barra = '|'
-      }, 300)
-    }
-    // colarBarraProgresso () {
-    //   const intervalHtml = setInterval(() => {
-    //     this.descricao.progresso += 0.5
-    //     if (this.habilidades.html >= this.enumHabilidades.html) clearInterval(intervalHtml)
-    //   }, 10)
-    //   const intevalCss = setInterval(() => {
-    //     this.habilidades.css += 0.5
-    //     if (this.habilidades.css >= this.enumHabilidades.css) clearInterval(intevalCss)
-    //   }, 5)
-    //   const intevalJs = setInterval(() => {
-    //     this.habilidades.js += 0.5
-    //     if (this.habilidades.js >= this.enumHabilidades.js) clearInterval(intevalJs)
-    //   }, 15)
-    // }
-  }
+  mounted () {},
+  methods: {}
 }
 </script>
