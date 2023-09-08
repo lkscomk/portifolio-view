@@ -54,7 +54,7 @@
         class="mx-2"
         color="white"
         text
-        @click="openUrl('/portofolio')"
+        @click="openUrl('/portfolio')"
       >
         PORTIFÓLIO
       </v-btn>
@@ -109,7 +109,6 @@
             <span>Mais Opções</span>
           </v-tooltip>
           <v-btn
-            :color="$vuetify.theme.dark ? '' : 'primary darken-3'"
             class="mx-0"
             dark
             small
@@ -131,6 +130,11 @@
             </v-list-item-content>
           </v-list-item>
           <v-list-item @click="openUrl('/habilidades')">
+            <v-list-item-content>
+              <v-list-item-title> HABILIDADES </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item @click="openUrl('/portfolio')">
             <v-list-item-content>
               <v-list-item-title> HABILIDADES </v-list-item-title>
             </v-list-item-content>
